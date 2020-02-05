@@ -1,0 +1,150 @@
+<!-- <app-navbar></app-navbar> -->
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav *ngIf="infoPoint == false" #drawer class="sidenav" fixedInViewport
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="(isHandset$ | async) === false">
+    <!-- <app-navbar></app-navbar> -->
+    <!-- <app-admin-nav ></app-admin-nav> -->
+
+    <!-- nav  -->
+
+    <div class="nav-content">
+      <div class="content">
+        <div class="row">
+
+          <div class="col-md-5">
+            <img width="110" src="./assets/img/Logo Identidad.png" class="navbar-brand-img" alt="...">
+          </div>
+          <div class="line-title"></div>
+          <div class="col-md-1">
+            <img width="130" src="./assets/img/Gifmm.jpg" class="navbar-brand-img" alt="...">
+          </div>
+        </div>
+  
+      </div>
+  
+      <app-notifi></app-notifi>
+    </div>
+
+
+
+    <!--  end nav  -->
+
+  </mat-sidenav>
+
+  <mat-sidenav *ngIf="infoPoint == true" #drawer class="sidenav" fixedInViewport
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="(isHandset$ | async) === false">
+
+
+    <div class="content-info">
+      <img src="./assets/img/Logo Identidad 2.png" class="navbar-brand-img" alt="...">
+
+    </div>
+    <div class="container">
+
+      <ngx-simplebar [options]="options">
+        <div>
+          <mat-icon class="icon">home</mat-icon>
+          <img class="image-point" [src]="point.img" alt="">
+          <h4 style="text-align: center;">Punto de Salud</h4>
+          <p>
+            Atencion medica Para Venezolanos
+          </p>
+
+          <div class="container horary" *ngFor="let hora of point.horarys">
+
+
+            <div #horay *ngIf="hora.dia == today">
+              <div>
+                <h4>Horarios</h4>
+                <p>Hoy</p>
+                <div *ngIf="hora.horaInic != ''; then thenBlock else elseBlock"></div>
+                <ng-template #thenBlock>
+                  <p>{{hora.horaInic}} // {{hora.horaFin}}</p>
+                </ng-template>
+
+                <ng-template #elseBlock>
+                  <p>Cerrado</p>
+                </ng-template>
+
+              </div>
+              <!-- <ng-template #elseBlock>
+              <p >Cerrado</p>
+            </ng-template> -->
+            </div>
+          </div>
+
+        </div>
+      </ngx-simplebar>
+    </div>
+
+
+
+
+
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <mat-toolbar style="background-color: #000;
+      height: 50px;
+      padding: 0;">
+      <div class="menu_button">
+        <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="toggle()">
+          <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+        </button>
+      </div>
+
+      <span style="color: #FFF; "></span>
+
+      
+
+      <div class="" style="line-height:  40px; margin: 10px; margin-left: auto;">
+        <i class="fa fa-search" style="color: yellow"></i>
+      </div>
+      <div class="" style="line-height:  40px;">
+        <label class="" style="font-size: 13px; color: darkgray;">Busqueda de puntos de apoyo </label>
+        <mat-icon style="color: aquamarine; vertical-align: middle;">keyboard_arrow_right</mat-icon>
+      </div>
+      <div class="dropdown text"> 
+        <a class="dropdown-toggle" href="#" id="navbarDropdownMenuLink" style="color: darkgray;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        {{cityLabel}}
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <label class="dropdown-item" (click)="setCity($event)"  *ngFor="let city of listData">{{city.departamento}}</label>
+         
+        </div>
+      </div>
+      <div class="dropdown text">
+        <a class="dropdown-toggle" href="#" id="navbarDropdownMenuLink" style="color: darkgray;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          {{tipeLabel}}
+        </a>
+        <div class="dropdown-menu"  aria-labelledby="navbarDropdownMenuLink">
+          <label class="dropdown-item" (click)="setTipe($event)"  *ngFor="let sector of listSectores.sector">{{sector.name}}</label>
+         
+        </div>
+      </div>
+      <div class="custon-btn" style="line-height:  40px;">
+        <button class="btn btn-sm " (click)="getPointsCustoms()" style="background-color: #00acb0;">Buscar</button> 
+      </div>
+      <span style="color: #00acb0; font-size: 30px; margin-left: 15px;">|</span>
+      
+      <div style="padding: 10px;" (click)="showBlog()">
+        <mat-icon style="color: rgb(233, 12, 12);">assignment</mat-icon>
+        <!-- <mat-icon svgIcon="list"></mat-icon> -->
+        <span style="color: #FFF;font-size: 13px;padding: 5px;vertical-align: text-bottom;">Blog</span>
+
+      </div>
+    </mat-toolbar>
+
+
+    <!-- Add Content Here -->
+    <div *ngIf="isMap" #mapContainer id="map" (click)="saber(drawer)"></div>
+    <app-blog *ngIf="isBlog"></app-blog>
+
+
+
+  </mat-sidenav-content>
+
+</mat-sidenav-container>
+<app-footer></app-footer>

@@ -1,0 +1,23 @@
+/* .container{
+    width: 30vw;
+    height: 200px;
+    position: relative;
+    padding: 4rem;
+    background: white;
+    border-radius: 1rem;
+    margin: auto;
+}*/
+
+form > *{
+    width: 100%;
+} 
+
+@media only screen and (max-width: 990px) {
+ 
+
+    .form-data{
+        margin-top: 50px;
+    }
+  }
+  
+

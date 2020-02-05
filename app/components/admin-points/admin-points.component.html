@@ -1,0 +1,52 @@
+<div class="main-content">
+  <app-spinner-overlay [overlay]="overlay"></app-spinner-overlay>
+
+  <mat-accordion>
+
+    <!-- model acordion -->
+    <mat-expansion-panel style="background: rgba(240, 243, 240, 0.98);" *ngFor="let organy of listOrganys">
+      <mat-expansion-panel-header>
+
+        <i class="fas fa-map-marker-alt icon pd-15"></i>
+        <!-- <label for="" *ngFor="let sector of point.sectores" *ngIf="sector.valid">{{sector.sector}}</label> -->
+        <label class="pd-15 label-weigt" style="width: 100px;" for="">{{organy.data.name}}</label>
+        <div *ngIf="organy.data.statusActive; then thenBlock else elseBlock"></div>
+            <ng-template #thenBlock >
+              <button style="margin: auto;"  class="validado" mat-button>Validado</button>
+            </ng-template>
+
+            <ng-template #elseBlock>
+              <button style="margin: auto;" class="validar"  (click)="validUser(organy)" mat-button>Validar</button>
+            </ng-template>
+        <button *ngIf="role == 'ADMIN'" mat-button class="more pd-15" (click)="deleteOrgany(organy)">
+          <label for="" class="ng-star-inserted label" style="vertical-align: initial;">Eliminar Organización</label>
+          <mat-icon aria-label="Side nav toggle icon">cancel</mat-icon>
+        </button>
+
+
+      </mat-expansion-panel-header>
+
+      <div class="containre">
+        <div *ngFor="let user of listUsers">
+          <div class="row" *ngIf="user.data.organy == organy.data.name">
+            <div class="col-12 " style="display: flex;">
+              <label class="pd-15 user-label" for="">{{user.data.name}}</label>
+
+              <button *ngIf="role != 'USER'" mat-button class="more pd-15 user-delete" (click)="delete(user.id)">
+                <label for="" class="ng-star-inserted label">Eliminar Usuario</label>
+                <mat-icon aria-label="Side nav toggle icon">cancel</mat-icon>
+              </button>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </mat-expansion-panel>
+
+
+  </mat-accordion>
+
+
+</div>

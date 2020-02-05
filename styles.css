@@ -1,0 +1,97 @@
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.cdk-overlay-connected-position-bounding-box {
+  left: 0 !important;
+  /* position: absolute;
+  z-index: 5;
+  background: white;
+  width: 30%; */
+
+}
+
+.mat-toolbar.mat-primary {
+  z-index: 9999;
+  position: relative;
+}
+
+.body-content {
+  background-image: url("./assets/img/fondo-grande.jpg");
+}
+
+.mat-form-field-underline {
+  display: none;
+}
+
+.gmnoprint{
+  display: none;
+}
+/* 
+.mat-form-field-wrapper {
+  padding-left: 10px;
+  border: 1px solid darkgray;
+  border-radius: 2.5rem;
+  margin-bottom: 10px;
+  padding-right: 10px;
+} */
+
+
+/* .mat-drawer-inner-container {
+  overflow-y: hidden !important;
+} */
+
+.line {
+  height: 1px;
+  margin-top: 35px !important;
+  margin-bottom: 35px !important;
+  border-top: 1px darkgrey solid;
+}
+
+.mat-checkbox-background,
+.mat-checkbox-frame {
+  border-radius: 70% !important;
+}
+
+.ngx-editor-textarea {
+  height: 300px !important;
+}
+
+.mat-tab-header {
+  border: none !important;
+}
+
+.mat-ink-bar {
+  display: none;
+}
+
+.mat-tab-label {
+  background-color: rgba(240, 243, 240, 0.98);
+  margin-left: 10px;
+  border-radius: 2rem;
+}
+
+
+.mat-tab-label:focus {
+  background: black;
+  color: darkgray;
+}
+
+.avatar-container{
+  margin: auto;
+  margin-top: 50px;
+  margin-bottom: 30px;
+}
+
+.mat-tab-header{
+  padding-left: 35px;
+}

@@ -1,0 +1,51 @@
+[
+    {
+        "name" : "Lunes",
+        "value" : 1,
+        "HoraInit" : "lunesInic",
+        "HoraFin" : "lunesFin"
+
+    },
+    {
+        "name" : "Martes",
+        "value" : 2,
+        "HoraInit" : "String",
+        "HoraFin" : "martesFin"
+
+    },
+    {
+        "name" : "Miercoles",
+        "value" : 3,
+        "HoraInit" : "miercoInic",
+        "HoraFin" : "miercoFin"
+
+    },
+    {
+        "name" : "Jueves",
+        "value" : 4,
+        "HoraInit" : "juevesInic",
+        "HoraFin" : "juevesFin"
+
+    },
+    {
+        "name" : "Viernes",
+        "value" : 5,
+        "HoraInit" : "viernes",
+        "HoraFin" : "viernesfin"
+
+    },
+    {
+        "name" : "Sabado",
+        "value" : 6,
+        "HoraInit" : "sabadoInic",
+        "HoraFin" : "sabadoFin"
+
+    },
+    {
+        "name" : "Domingo",
+        "value" : 7,
+        "HoraInit" : "domingoInic",
+        "HoraFin" : "domingoFin"
+
+    }
+]

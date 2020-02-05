@@ -1,0 +1,42 @@
+<div class="main-content">
+
+  <!-- model acordion -->
+
+
+  <div class="container">
+
+    <table class="table align-items-center table-flush">
+      <tbody>
+        <tr *ngFor="let user of listUsers">
+          <td><i class="fas fa-user"></i></td>
+          <td>{{user.data.name}}</td>
+          <td><strong>{{user.data.orgName}}</strong></td>
+          <!-- <td>Bogotá</td> -->
+          <td>
+            <div *ngIf="user.data.statusActive; then thenBlock else elseBlock"></div>
+            <ng-template #thenBlock>
+              <button class="validado"  mat-button>Validado</button>
+            </ng-template>
+
+            <ng-template #elseBlock>
+              <button class="validar" (click)="validUser(user)" mat-button>Validar</button>
+            </ng-template>
+          </td>
+          <td>
+
+            <button *ngIf="role != 'USER'"  mat-button class="more pd-15 user-delete" (click)="delete(user.id)">
+              <label for="" class="ng-star-inserted label" >Eliminar Punto</label>
+              <mat-icon aria-label="Side nav toggle icon">cancel</mat-icon>
+            </button>
+          </td>
+        </tr>
+
+
+      </tbody>
+    </table>
+  </div>
+
+
+
+
+</div>

@@ -1,0 +1,47 @@
+mat-sidenav {
+    width: 360px;
+   
+}
+
+.buscar{
+    padding-top: 5px;
+}
+
+.btn-buss{
+    margin-right: 20px;
+    width: 130px;
+    border-radius: 1rem;
+    color: darkgray;
+}
+
+.title{
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-right: auto;
+}
+.container-blog{
+    width: 75%;
+    margin: auto;
+}
+
+.img{
+    border-radius: 1rem;
+}
+
+.main{
+    height: 88vh;
+    padding-top: 140px;
+}
+
+.img-noti{
+    width: 280px;
+    height: 150px;
+    margin-left: 22px;
+}
+
+.filter{
+    display: flex;
+    border-bottom: 1px darkgray solid;
+    margin-bottom: 50px;
+    padding-bottom: 30px;
+}

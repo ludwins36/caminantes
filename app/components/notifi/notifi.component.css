@@ -1,0 +1,20 @@
+mat-sidenav {
+    width: 360px;
+   
+}
+
+.img{
+    margin-left: 22%;
+}
+
+.main{
+    height: 88vh;
+    padding-top: 140px;
+}
+
+.img-noti{
+    width: 250px;
+    height: 150px;
+    margin-left: 50px;
+    border-radius: 1rem;
+}

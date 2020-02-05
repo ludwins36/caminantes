@@ -1,0 +1,27 @@
+<div class="container-blog main">
+  <!-- <ngx-simplebar [options]="options" > -->
+    <div class="filter">
+      <h2 class="title">NOTICIAS DE INTERÉS</h2>
+
+      <div class="custon-btn" style="line-height:  40px;">
+        <button class="btn btn-buss">Buscar</button>
+      </div>
+
+      <div class="buscar">
+        <label class="" style="font-size: 13px; color: darkgray;">ORDENAR POR </label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-4" *ngFor="let post of listPost">
+        <div class="text-center">
+          <img class="img" src="{{post.img}}" alt="migrantes" width="80%%" height="150px">
+          <h5>{{post.title}}</h5>
+          <p style="font-size: 13px;">{{post.descrip}}</p>
+          <!-- <button class="btn btn-success">ver mas</button> -->
+        </div>
+      </div>
+    </div>
+    
+  <!-- </ngx-simplebar> -->
+
+</div>

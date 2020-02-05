@@ -1,0 +1,160 @@
+body {
+  overflow-y: hidden;
+}
+
+.card {
+  background: #f7f3f3;
+}
+
+.container {
+  background: white;
+  padding: 50px;
+  font-size: 15px;
+  border-radius: 1rem;
+}
+
+.icon-title {
+  background: rgb(240, 200, 25);
+  color: azure;
+  border-radius: 50%;
+  margin-right: 20px;
+}
+
+
+
+h2 {
+  font-size: 18px;
+}
+
+/* .title{
+  display: flex;
+} */
+
+.tile-content {
+  display: flex;
+  justify-items: left;
+  /* justify-content: center; */
+  padding: 20px;
+  border-bottom: 1px darkgray solid;
+  width: 80%;
+  margin: auto;
+  margin-top: 50px;
+
+}
+
+.gmnoprint {
+  display: none;
+}
+
+.sector-title {
+  margin-top: 30px;
+}
+
+.checkbox {
+  margin-left: 20px;
+}
+
+.images {
+  display: flex;
+}
+
+#map {
+  margin-top: 20px;
+  border-radius: 1rem;
+}
+
+.fija-movil {
+  display: flex;
+  margin: 20px 0 20px 0;
+}
+
+.fija-movil>h3 {
+  margin-top: 15px;
+}
+
+.select-fija {
+  margin-left: auto;
+}
+
+.select {
+  width: 20%;
+}
+
+.ubication {
+  display: flex;
+}
+
+.ubication>h3 {
+  margin-top: 15px;
+}
+
+h3 {
+  margin: 0 10px;
+  vertical-align: super;
+  font-weight: bold;
+  display: inline;
+  font-size: 16px !important;
+}
+
+textarea {
+  height: 100px;
+}
+
+form>* {
+  width: 100%;
+}
+
+.radio {
+  margin: 10px;
+  height: 15px;
+}
+
+.container {
+  margin: 10%;
+  width: 80%;
+}
+
+.content-date {
+  font-size: 13px;
+  color: #000;
+  font-weight: bold;
+}
+
+.input-content {
+  border: 1px darkgray solid;
+  border-radius: 1.5rem;
+  padding: 10px;
+  margin-left: 10px;
+  margin-top: 10px;
+}
+
+.input {
+  border: none;
+  width: 85%;
+  border-radius: 2rem;
+}
+
+.address-input {
+  width: 80%;
+}
+
+.icon {
+  margin: auto;
+  height: 100%;
+  font-size: 30px;
+}
+
+#map {
+  height: 250px;
+}
+
+.btn {
+  font-size: 15px;
+  width: 200px;
+  padding: 0;
+  border-radius: 1rem;
+}
+
+.mat-checkbox {
+  margin-right: 10px;
+}

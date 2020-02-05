@@ -1,0 +1,30 @@
+[
+    {
+        "name" : "Seguridad Alimentaria",
+        "sector" : "security"
+    },
+    {
+        "name" : "Salud",
+        "sector" : "salud"
+    },
+    {
+        "name" : "Protección",
+        "sector" : "protec"
+    },
+    {
+        "name" : "Multisectorial",
+        "sector" : "multi"
+    },
+    {
+        "name" : "Agua  y Saneamiento",
+        "sector" : "sana"
+    },
+    {
+        "name" : "Alojamiento",
+        "sector" : "aloja"
+    },
+    {
+        "name" : "Transporte",
+        "sector" : "transp"
+    }
+]

@@ -1,0 +1,104 @@
+#map {
+  height: 90vh;
+  width: 100%;
+}
+mat-sidenav-container{
+  background-image: url("../../../assets/img/fondoLateral.jpeg");
+}
+
+.content {
+  margin: 0 40px 70px 40px;
+}
+
+.line-title{
+  border: 1px solid darkgray;
+  width: .5px;
+  margin-left: 25px;
+  margin-right: 15px;
+}
+
+.menu_button {
+  background: white;
+  width: 40px;
+  height: 100%;
+  text-align: end;
+}
+
+mat-sidenav {
+
+  position: absolute;
+  top: 50px !important;
+  left: 40px;
+}
+
+.content-info {
+  margin: 0 120px;
+  width: 124px;
+}
+
+.icon {
+  width: 100%;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.image-point {
+  width: 90%;
+  height: 220px;
+}
+
+.horary {
+  text-align: center;
+  margin-top: 50px;
+
+  p {
+    margin-bottom: 0;
+  }
+}
+
+.nav-content {
+  width: 100%;
+  height: 100%;
+}
+
+.text {
+  font-size: 13px;
+  color: darkgray !important;
+  margin-left: 20px;
+}
+
+.custon-btn {
+  margin-left: 20px;
+
+  button {
+    width: 100px;
+    border-radius: 1rem;
+  }
+}
+
+.dropdown-menu{
+  height: 200px;
+  overflow-x: auto;
+}
+
+@media only screen and (max-width: 600px) {
+  mat-sidenav {
+    left: 0;
+  }
+
+  mat-toolbar {
+    width: fit-content;
+  }
+
+  #map {
+    width: 140%;
+  }
+}
+
+@media only screen and (max-width: 300px) {
+ 
+
+  #map {
+    width: 200%;
+  }
+}

@@ -1,0 +1,49 @@
+.more{
+    margin: 0 10px 0 auto;
+}
+
+
+.icon{
+    margin-right: 20px;
+}
+
+.pd-15{
+    padding-top: 15px !important;
+}
+
+.label{
+    vertical-align: bottom;
+}
+
+.main-content{
+    width: 90%;
+    margin: auto;
+    margin-top: 20px;
+}
+
+.user-delete{
+    margin-right: 20px;
+}
+
+.user-label{
+    margin-left: 70px;
+}
+
+.label-weigt{
+    font-weight: bold;
+}
+
+.validado{
+    background: aquamarine;
+    width: 150px;
+    border-radius: 1rem;
+    height: 35px;
+}
+
+.validar{
+    background: #000;
+    width: 150px;
+    color: darkgray;
+    border-radius: 1rem;
+    height: 35px;
+}

@@ -1,0 +1,54 @@
+<app-filter></app-filter>
+<div class="main-content">
+  <app-spinner-overlay [overlay]="overlay"></app-spinner-overlay>
+
+  <mat-accordion>
+
+    <!-- model acordion -->
+    <mat-expansion-panel *ngFor="let point of listPoins">
+      <mat-expansion-panel-header>
+
+       <mat-icon>home</mat-icon>
+       <label for="">Punto de ayuda 1</label>
+       <!-- <label for="" *ngFor="let sector of point.sectores" *ngIf="sector.valid">{{sector.sector}}</label> -->
+       <label for="">{{point.data.ubication.departamento}}</label>
+       <label for="" class="ng-star-inserted">Ver mas</label>
+
+      </mat-expansion-panel-header>
+
+      <div class="containre">
+        <div class="row">
+            <div class="col">
+                <img width="500" height="200" [src]="point.data.img" alt="">
+            </div>
+        </div>
+        <div class="row">
+            <div class="status">
+                <mat-form-field class="status-select">
+                    <mat-select *ngIf="point.data.active; else inactive" placeholder="ACTIVO">
+                      
+                    </mat-select>
+                    <ng-template  #inactive >
+                      <mat-select  placeholder="DESACTIVO">
+                      
+                      </mat-select>
+                    </ng-template>
+                    
+                    
+                  </mat-form-field>
+            </div>
+            <div class="delete">
+                <button (click)="delete(point)" class="btn btn-danger">
+                    Eliminar Punto
+                </button>
+            </div>
+        </div>
+      </div>
+
+    </mat-expansion-panel>
+
+
+  </mat-accordion>
+
+
+</div>

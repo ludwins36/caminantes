@@ -1,0 +1,25 @@
+.main-content{
+    width: 97%;
+    margin: 10px;
+}
+
+label{
+    margin: auto;
+}
+
+.status{
+    margin-top: 12px;
+}
+
+.status-select{
+    width: 120px;
+}
+
+.delete{
+    margin-left: auto;
+    margin-top: 20px;
+}
+
+img{
+    margin-left: 40px;
+}

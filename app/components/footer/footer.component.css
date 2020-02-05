@@ -1,0 +1,41 @@
+.footer-contetn {
+  position: absolute;
+  z-index: 9;
+  background: #000;
+  width: 100%;
+  color: white;
+
+}
+
+.colaboradores {
+  display: flex;
+  align-items: center;
+}
+
+.colabora-entity {
+  display: flex;
+  margin-left: auto;
+  align-items: center;
+  margin-right: 5%;
+}
+
+.info {
+  margin-left: 50px;
+  margin-top: 5px;
+  color: white;
+  font-size: 13px;
+  line-height: 30px;
+}
+
+
+@media only screen and (max-width: 600px) {
+
+  .info{
+    margin-left: 20px;
+    width: 50%;
+  }
+
+  footer{
+    bottom: 0;  
+  }
+}

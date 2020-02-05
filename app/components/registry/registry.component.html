@@ -1,0 +1,109 @@
+<div class="body-content">
+  <div class="main-content">
+    <!-- Header -->
+    <div class="py-7 py-lg-8">
+      <div class="container">
+        <div class="header-body text-center mb-7">
+          <div class="row justify-content-center">
+            <div class="col-lg-5 col-md-6">
+              <img src="./assets/img/Logo Identidad 2 blanco.png" alt="fondo inicio de sesion">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Page content -->
+    <div class="container mt--8 pb-5 form-data">
+      <div class="row justify-content-center">
+        <div class="col-lg-5 col-md-7">
+          <div class="card  shadow border-0">
+
+            <div class="card-body" style="height: 515px; margin-bottom: 50px;">
+              <div class="text-center text-muted mb-4">
+                <h1>INICIAR SESIÓN</h1>
+              </div>
+              <mat-progress-spinner mode="indeterminate" *ngIf="isLogin" diameter="50" style="margin: auto;"></mat-progress-spinner>
+
+              <form [formGroup]="loginForm" novalidate>
+                <mat-form-field>
+                  <input matInput [(ngModel)]="user.email" formControlName="email" placeholder="Usuario/Correo" />
+                </mat-form-field>
+                <mat-form-field>
+                  <input type="password" matInput [(ngModel)]="user.password" formControlName="password" placeholder="Contraseña" />
+
+                </mat-form-field>
+
+                <div style="text-align: center;">
+                  <a href="#">¿Olvido su contraseña?</a>
+                </div>
+
+                <div class="text-center">
+                  <button type="button" (click)="login()" class="btn my-4"
+                    style="background-color: black; color: white;">Continuar</button>
+                </div>
+
+
+
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-5 col-md-7 form-data">
+          <div class="card  shadow border-0">
+            <div class="card-body"  style="height: 515px; margin-bottom: 50px;">
+              <div class="text-center text-muted mb-6">
+                <h1>ABRIR CUENTA</h1>
+              </div>
+              <mat-progress-spinner mode="indeterminate" *ngIf="isRegister" diameter="50" style="margin: auto;"></mat-progress-spinner>
+              <form [formGroup]="registerForm" novalidate>
+                <mat-form-field>
+                  <input matInput [(ngModel)]="organy.name" formControlName="name" placeholder="Nombre" />
+                </mat-form-field>
+                <mat-form-field>
+                  <input matInput [(ngModel)]="organy.email" formControlName="email" placeholder="E-mail" />
+          
+                </mat-form-field>
+
+                <mat-form-field>
+                  <input type="password" matInput [(ngModel)]="organy.password" formControlName="password" placeholder="Contraseña" />
+
+                </mat-form-field>
+          
+                <mat-form-field>
+                  <mat-select [(ngModel)]="organy.type" formControlName="type" placeholder="Tipo de registro">
+                    <mat-option value="0">
+                      Organización
+                    </mat-option>
+          
+                    <mat-option value="1">
+                      Colaborador
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+          
+                <mat-form-field *ngIf="organy.type == 1">
+                  <mat-select [(ngModel)]="organy.organization" (selectionChange)="setId($event)" formControlName="organization"  placeholder="Tipo de Organización">
+                    <mat-option  *ngFor="let organy of listOrganys" value="{{organy.id}}">
+                      {{organy.data.name}}
+                    </mat-option>
+          
+                   
+                  </mat-select>
+                </mat-form-field>
+
+                <div class="text-center">
+                  <button type="button" (click)="registerUser()" class="btn my-4"
+                    style="background-color: black; color: white;">Continuar</button>
+                </div>
+              </form>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <app-footer-admin></app-footer-admin>
+
+    
+
+  </div>

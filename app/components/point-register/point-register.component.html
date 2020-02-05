@@ -1,0 +1,250 @@
+<div class="card">
+  <div class="tile-content">
+    <mat-icon class="icon-title">arrow_right</mat-icon>
+    <h2>FORMULARIO DE OFERTA PARA LA ASISTENCIA DE CAMINANTES</h2>
+  </div>
+
+  <div class="container">
+
+    <app-spinner-overlay [overlay]="overlay"></app-spinner-overlay>
+
+    <form [formGroup]="ubicationForm" novalidate>
+      <div class="title">
+        <h3>Titulo</h3>
+        <div class="input-group mb-3 input-content">
+
+          <input matInput placeholder="Titulo del Punto" />
+        </div>
+      </div>
+
+      <div class="description">
+        <h3>Descripsión</h3>
+        <div class="input-group mb-3 input-content">
+
+          <textarea matInput placeholder="Coloque una descripsion del punto"></textarea>
+        </div>
+      </div>
+
+      <div class="line"></div>
+
+      <div class="ubication">
+        <h3>Departamento</h3>
+        <mat-form-field class="select">
+          <mat-select [(ngModel)]="points.ubication.departamento" (selectionChange)="onChange($event.value)"
+            formControlName="depart" placeholder="Seleccionar">
+            <mat-option *ngFor="let depto of listData" [value]="depto.departamento">
+              {{ depto.departamento }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <h3 style="margin-left: auto;">Municipio</h3>
+
+        <mat-form-field class="select">
+          <mat-select [(ngModel)]="points.ubication.municipio" formControlName="city" placeholder="Seleccionar">
+            <mat-option *ngFor="let depto of listCitys" [value]="depto">
+              {{ depto }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+
+      </div>
+      <div class="fija-movil">
+        <h3>La ubicación del punto movil o fija: </h3>
+
+        <mat-form-field class="select-fija">
+          <mat-select formControlName="iterante" aria-label="Select an option" [(ngModel)]="points.ubication.iterante"
+            placeholder="Seleccionar">
+            <mat-option value="si">Si</mat-option>
+            <mat-option value="no">No</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+
+      </div>
+
+      <h3>Seleccione ubicación </h3>
+
+      <div #mapContainer id="map"></div>
+
+      <div class="fija-movil">
+        <h3>Buscar lugar o dirección </h3>
+
+        <div class="input-group mb-3 input-content address-input">
+          <input type="text" [(ngModel)]="points.ubication.address" #address id="address" formControlName="address"
+            (keydown)="setAddress()" class="input" aria-label="Username" aria-describedby="basic-addon1" />
+        </div>
+
+
+      </div>
+
+      <div class="line"></div>
+      <div class="images">
+        <div class="title">
+          <h3>Fotos de punto de atención</h3>
+        </div>
+        <br />
+        <img *ngIf="src" width="300" height="500" [src]="src" alt="" />
+        <div class="container-input-file">
+          <label class="custom-file">
+            <!-- <mat-icon>home</mat-icon> -->
+            <input class="file-input" type="file" (change)="cambioArchivo($event)" />
+          </label>
+        </div>
+      </div>
+      <div class="line"></div>
+
+      <div class="sector">
+        <div class="sector-title">
+          <h3>¿Cuál(es) grupo(s) poblacional(es) recibe atención en este punto?</h3>
+        </div>
+        <br />
+        <div class="checkbox">
+          <mat-checkbox class="custom-frame">
+            Colombianos retornados
+          </mat-checkbox>
+        </div>
+        <div class="checkbox">
+          <mat-checkbox class="custom-frame">
+            Comunidad anfitriona
+          </mat-checkbox>
+        </div>
+      </div>
+
+      <div class="sector">
+        <div class="sector-title">
+          <h3>Sector: </h3>
+
+        </div>
+        <br />
+        <div class="checkbox" *ngFor="let sect of points.sectores.sector;">
+          <mat-checkbox formControlName="sector" [(ngModel)]="sect.sector" class="custom-frame">
+            {{ sect.name }}
+          </mat-checkbox>
+
+        </div>
+      </div>
+
+      <div class="line"></div>
+      <div class="capacidad">
+        <div class="title">
+          <h3>Oferta</h3>
+        </div>
+        <div style="width: 30% !important;" class="input-group mb-3 input-content">
+          <input formControlName="capacidad" [(ngModel)]="points.capacidad" type="number" class="input" />
+        </div>
+      </div>
+
+      <div class="capacidad">
+        <div class="title">
+          <h3>Cantidad de entrega diaria</h3>
+        </div>
+        <div style="width: 30% !important;" class="input-group mb-3 input-content">
+          <input formControlName="capacidad" [(ngModel)]="points.capacidad" type="number" class="input" />
+        </div>
+      </div>
+
+      <div class="line"></div>
+
+      <div class="">
+        <h3>El punto estará activo durante los meses de: </h3>
+        <br />
+
+        <div class="row">
+          <div class="content-date">
+            <mat-form-field style="width: 120px; text-align: center;">
+              <input formControlName="fechaInit" [(ngModel)]="points.ubication.fechaInit" matInput
+                [matDatepicker]="picker" placeholder="Desde" />
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+          </div>
+
+          <div class="content-date">
+            <div style="display: block;">
+              <mat-form-field style="width: 120px; text-align: center;">
+                <input formControlName="fechaFin" [(ngModel)]="points.ubication.fechaFin" matInput
+                  [matDatepicker]="picker2" placeholder="Hasta" />
+                <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                <mat-datepicker #picker2></mat-datepicker>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="line"></div>
+
+      <div class="horarys">
+        <div class="title">
+          <h3>Horario de atención: </h3>
+        </div>
+        <br />
+
+        <div class="content-picker">
+          <div class="container-horarys">
+            <div class="row" *ngFor="let dia of points.horarys.dias">
+              <label for="" style="width: 80px; margin-right: 20px;">{{
+                dia.name
+              }}</label>
+              <div class="content-date" style="text-align: center;">
+                <input formControlName="horaInic" [(ngModel)]="dia.HoraInit" matInput type="time" />
+              </div>
+              <div class="content-date" style="text-align: center;">
+                <input formControlName="horaFin" [(ngModel)]="dia.HoraFin" matInput type="time" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="line"></div>
+
+      <div class="contact">
+        <div class="row">
+          <div class="col">
+            <h3>Nombre de contacto</h3>
+            <div class="input-group mb-3 input-content address-input">
+              <input type="text" id="address" placeholder="Nombre y apellido" class="input" />
+            </div>
+          </div>
+
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <h3>Teléfono</h3>
+            <div class="input-group mb-3 input-content address-input">
+              <input type="text" id="address" placeholder="Nombre y apellido" class="input" />
+            </div>
+          </div>
+
+          <div class="col">
+            <h3>Email</h3>
+            <div class="input-group mb-3 input-content address-input">
+              <input type="text" id="address" placeholder="Nombre y apellido" class="input" />
+            </div>
+          </div>
+
+        </div>
+        
+      </div>
+      <div class="line"></div>
+
+
+      <div class="text-center">
+        <button type="button" (click)="registerPoint()" class="btn my-4"
+          style="background-color: #ea9c27; color: white;">
+          Crear Punto
+        </button>
+
+        <button type="button" (click)="registerPoint()" class="btn my-4" style="background-color: #11cdef; color: white;">
+          Buardar Como Borrador
+        </button>
+      </div>
+    </form>
+
+  </div>
+
+</div>

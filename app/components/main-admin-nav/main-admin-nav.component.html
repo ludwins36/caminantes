@@ -1,0 +1,65 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
+    <mat-toolbar></mat-toolbar>
+   
+    <mat-nav-list>
+      <div class="nav">
+        <a class="img-title" href="./index.html">
+          <img class="" src="./assets/img/Logo Identidad 2.png" class="navbar-brand-img" alt="...">
+        </a>
+       </div>
+      <a mat-list-item class="nav-link" (click)="setTitle('ESTADISTICAS', 1)" href="/#/admin#estadisticas">
+        <i class="fas fa-signal "> </i> <span class="title-nav" style="margin-left: 10px;">ESTADISTICAS</span>
+      </a>
+      <a mat-list-item class="nav-link" (click)="setTitle('PUNTOS REGISTRADOS', 2)" href="/#/admin#puntos">
+        <i class="fas fa-map-marker-alt"> </i> <span class="title-nav" style="margin-left: 10px;">PUNTOS REGISTRADOS</span>
+      </a>
+      <a mat-list-item class="nav-link" (click)="setTitle('REGISTRAR PUNTOS', 3)" href="/#/admin#registrarPuntos">
+        <i class="fas fa-pen"></i> <span class="title-nav" style="margin-left: 10px;"> REGISTRAR PUNTOS </span>
+      </a>
+      <a mat-list-item class="nav-link " (click)="setTitle('BUZON DE ALERTAS', 4)" href="/#/admin#alerts">
+        <i class="fas fa-bell"></i> <span class="title-nav" style="margin-left: 10px;"> BUZON DE ALERTAS</span>
+      </a>
+      <a mat-list-item class="nav-link " (click)="setTitle('CREAR ENTRADAS', 5)" href="/#/admin#crear">
+        <i class="fas fa-search-plus"></i><span class="title-nav" style="margin-left: 10px;"> CREAR ENTRADAS</span>
+      </a>
+      <a mat-list-item class="nav-link" (click)="setTitle('PERFIL DE ADMINISTRADOR', 6)" href="/#/admin#admin">
+        <i class="ni ni-single-02"></i><span class="title-nav" style="margin-left: 10px;"> ADMINISTRADOR</span>
+      </a>
+    </mat-nav-list>
+   
+
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <mat-toolbar style="background-color: #52c1d3;">
+      <button type="button" aria-label="Toggle sidenav" mat-icon-button style="color: #ffffff;"
+        (click)="drawer.toggle()" *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span style="color: #FFF; margin: auto;">{{name}}</span>
+      <div style="padding: 10px;" (click)="logaut()">
+        <mat-icon style="color: #FFF;"> remove_circle_outline</mat-icon>
+        <span style="color: #FFF;font-size: 15px;padding: 5px;vertical-align: text-bottom;">SALIR</span>
+
+      </div>
+    </mat-toolbar>
+    <!-- Add Content Here -->
+
+    <app-estadisticas *ngIf="content == 1" data-spy="scroll" id="estadisticas" data-target="#sidenav-main"
+      data-offset="0"></app-estadisticas>
+    <app-points *ngIf="content == 2" data-spy="scroll" id="puntos" data-target="#sidenav-main" data-offset="0">
+    </app-points>
+    <app-point-register *ngIf="content == 3" data-spy="scroll" id="registrarPuntos" data-target="#sidenav-main"
+      data-offset="0"></app-point-register>
+    <app-alerts *ngIf="content == 4" data-spy="scroll" id="alerts" data-target="#sidenav-main" data-offset="0">
+    </app-alerts>
+    <app-create *ngIf="content == 5" data-spy="scroll" id="crear" data-target="#sidenav-main" data-offset="0">
+    </app-create>
+    <app-admin-profile *ngIf="content == 6" data-spy="scroll" id="admin" data-target="#sidenav-main" data-offset="0">
+    </app-admin-profile>
+
+  </mat-sidenav-content>
+
+</mat-sidenav-container>
