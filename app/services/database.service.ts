@@ -111,7 +111,7 @@ export class DatabaseService {
       propietario: poin.propietario,
       capacidad: poin.capacidad,
       isActive : poin.active,
-      organy : poin.orgName,
+      // organy : poin.orgName,
       dateCreation : new Date(),
       dateModification : new Date()
     });
@@ -122,6 +122,10 @@ export class DatabaseService {
     if (sectores.length > 1) {
       poin.multisector = true;
     }
+    console.log(poin.ubication.lat);
+    console.log(poin.ubication.lnt);
+
+    let grupos =  this.getGrupos(poin.grupo.grupos);
 
     this.setAlert(poin);
 
@@ -129,24 +133,34 @@ export class DatabaseService {
       ubication: {
         departamento: poin.ubication.departamento,
         municipio: poin.ubication.municipio,
-        iterante: poin.ubication.iterante,
-        fechaInit: poin.ubication.fechaInit,
-        fechaFin: poin.ubication.fechaFin,
+        iterante: poin.ubication.iterante, 
+        fechaInit: poin.ubication.fechaInit.valueOf(),
+        fechaFin: poin.ubication.fechaFin.valueOf(),
         address: poin.ubication.address,
         lat: poin.ubication.lat,
         lnt: poin.ubication.lnt
       },
+      contact : {
+        name : poin.contact.name,
+        telefono : poin.contact.telefono,
+        email : poin.contact.email
+      },
+      title : poin.title,
+      desc : poin.desc,
+      oferta : poin.oferta,
+      grupos : grupos,
+      borrador : poin.borrador,
       sectores: sectores,
-      orgName: poin.orgName,
-      organy: poin.organizacion,
+      // orgName: poin.orgName,
+      organizacion: poin.organizacion,
       propietario: poin.propietario,
       capacidad: poin.capacidad,
       horarys: this.getHorarys(poin.horarys.dias),
       img: poin.img,
       multisector: poin.multisector,
       active: poin.active,
-      dateCreation : new Date(),
-      dateModification : new Date()
+      dateCreation : Date.now(),
+      dateModification :Date.now()
     });
   }
 
@@ -187,6 +201,23 @@ export class DatabaseService {
     });
   }
 
+  private getGrupos(grupos) {
+    let data = [];
+    for (let index = 0; index < grupos.length; index++) {
+      if (grupos[index].grupo) {
+        if(!this.nameSector){
+            this.nameSector =  grupos[index].name;
+        }
+        let dato = {
+          sector: grupos[index].name
+        };
+        data.push(dato);
+      }
+    }
+
+    return data;
+  }
+
   private getSectores(sectores) {
     let data = [];
     for (let index = 0; index < sectores.length; index++) {
@@ -196,7 +227,6 @@ export class DatabaseService {
         }
         let dato = {
           sector: sectores[index].name,
-          icon: sectores[index].icon,
           desp: sectores[index].desp
         };
         data.push(dato);

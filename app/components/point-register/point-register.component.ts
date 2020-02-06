@@ -59,17 +59,25 @@ export class PointRegisterComponent implements AfterViewInit {
     this.ubicationForm = formBuilder.group({
       depart: ["", Validators.compose([Validators.required])],
       city: ["", Validators.compose([Validators.required])],
+      title: ["", Validators.compose([Validators.required])],
+      desc: ["", Validators.compose([Validators.required])],
       address: ["", Validators.compose([Validators.required])],
       iterante: ["", Validators.compose([Validators.required])],
       fechaInit: ["", Validators.compose([Validators.required])],
       fechaFin: ["", Validators.compose([Validators.required])],
       sector: [false, Validators.compose([Validators.pattern("true")])],
+      grupo: [false, Validators.compose([Validators.pattern("true")])],
       capacidad: ["", Validators.compose([Validators.required])],
+      oferta: ["", Validators.compose([Validators.required])],
       horaInic: ["", Validators.compose([Validators.required])],
+      name: ["", Validators.compose([Validators.required])],
+      email: ["", Validators.compose([Validators.required])],
+      telefono : ["", Validators.compose([Validators.required])],
       horaFin: ["", Validators.compose([Validators.required])]
     });
 
     this.user = JSON.parse(this.cookieService.get("cookie-user"));
+    console.log(this.user);
   }
 
   ngAfterViewInit() {
@@ -82,6 +90,24 @@ export class PointRegisterComponent implements AfterViewInit {
 
   mapInitializer() {
     this.map = new google.maps.Map(this.gmap.nativeElement, this.mapOptions);
+    let directionsDisplay = new google.maps.DirectionsRenderer({
+      draggable: true,
+      map: this.map,
+      suppressMarkers: true
+    });
+
+   
+   
+    this.map.addListener('click', data => {
+      console.log(data.latLng.lat());
+      this.setMarkertMAp(data.latLng);
+      this.points.ubication.lat = data.latLng.lat();
+      this.points.ubication.lnt = data.latLng.lng();
+    })
+
+    
+    
+
     this.auto = new google.maps.places.Autocomplete(this.address.nativeElement);
     this.auto.addListener("place_changed", event => {
       this.points.ubication.address = this.address.nativeElement.value;
@@ -89,18 +115,27 @@ export class PointRegisterComponent implements AfterViewInit {
     });
   }
 
+  
+
   setMarkertMAp(coor) {
     if (this.marker != undefined) {
-      this.marker.setMap(null);
       this.marker.setMap(null);
     }
 
     this.marker = new google.maps.Marker({
       map: this.map,
-      draggable: false,
+      draggable: true,
       position: coor,
       title: "Su posición"
     });
+
+    this.marker.addListener('dragend', event => {
+      // this.points.ubication.latLnt = event.latLng;
+      this.points.ubication.lat = event.latLng.lat();
+      this.points.ubication.lnt = event.latLng.lng();
+    })
+
+    this.map.setCenter(coor);
     this.marker.setMap(this.map);
   }
 
@@ -113,17 +148,15 @@ export class PointRegisterComponent implements AfterViewInit {
         if (coor.results.length == 0) {
           return;
         }
-        let a = coor.results[0].geometry.location;
 
-        console.log(a);
-        this.points.ubication.lat = a.lat;
-        this.points.ubication.lnt = a.lng;
-        let coorMarkert = new google.maps.LatLng(
-          parseFloat(a.lat),
-          parseFloat(a.lng)
-        );
+        // this.points.ubication.lat = a.lat;
+        // this.points.ubication.lnt = a.lng;
+        // let coorMarkert = new google.maps.LatLng(
+        //   parseFloat(a.lat),
+        //   parseFloat(a.lng)
+        // );
 
-        this.setMarkertMAp(coorMarkert);
+        // this.setMarkertMAp(coorMarkert);
       });
     }, 3000);
   }
@@ -142,7 +175,7 @@ export class PointRegisterComponent implements AfterViewInit {
     reader.readAsDataURL(file);
   }
 
-  async registerPoint() {
+  async registerPoint(status) {
     this.overlay = true;
     console.log(this.points);
 
@@ -151,6 +184,7 @@ export class PointRegisterComponent implements AfterViewInit {
         this.db.setImg(this.file).then(url => {
           this.points.img = String(url);
           this.points.propietario = this.user.id;
+          this.points.borrador = status;
           this.points.orgName = this.user.data.orgName;
           if (this.user.data.organy == "NULL") {
             this.points.organizacion = this.user.id;

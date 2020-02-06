@@ -2,6 +2,11 @@ body {
   overflow-y: hidden;
 }
 
+mat-sidenav{
+  background-image: url("../../../assets/img/fondoLateral.jpeg");
+
+}
+
 .sidenav-container {
   height: 95vh;
 }

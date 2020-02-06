@@ -1,54 +1,166 @@
-<app-filter></app-filter>
+<!-- <app-filter></app-filter> -->
 <div class="main-content">
+  <div class="tile-content">
+    <mat-icon class="icon-title">arrow_right</mat-icon>
+    <h2>Filtrar por: </h2>
+
+    <mat-form-field class="date">
+      <input matInput [matDatepicker]="picker" placeholder="Desde" />
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field class="select">
+      <mat-select placeholder="Region">
+        <mat-option *ngFor="let depto of listData" [value]="depto.departamento">
+          {{ depto.departamento }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+
+    <button class="buscar" mat-flat-button>Buscar </button>
+
+
+
+  </div>
   <app-spinner-overlay [overlay]="overlay"></app-spinner-overlay>
 
-  <mat-accordion>
+  <div class="acordion">
+    <mat-accordion>
 
-    <!-- model acordion -->
-    <mat-expansion-panel *ngFor="let point of listPoins">
-      <mat-expansion-panel-header>
+      <!-- model acordion -->
+      <mat-expansion-panel *ngFor="let point of listPoins">
+        <mat-expansion-panel-header>
 
-       <mat-icon>home</mat-icon>
-       <label for="">Punto de ayuda 1</label>
-       <!-- <label for="" *ngFor="let sector of point.sectores" *ngIf="sector.valid">{{sector.sector}}</label> -->
-       <label for="">{{point.data.ubication.departamento}}</label>
-       <label for="" class="ng-star-inserted">Ver mas</label>
+          <mat-icon>brightness_1</mat-icon>
+          <label class="title-label" for="">{{point.data.title}}</label>
+          <label for="">{{point.data.sectores[0].sector}}</label>
+          <!-- <label for="" *ngFor="let sector of point.sectores" *ngIf="sector.valid">{{sector.sector}}</label> -->
+          <label for="">{{point.data.ubication.departamento}}, {{point.data.ubication.municipio}}</label>
+          <!-- <label for="" class="ng-star-inserted">Ver mas</label> -->
 
-      </mat-expansion-panel-header>
+        </mat-expansion-panel-header>
 
-      <div class="containre">
-        <div class="row">
+        <div class="container">
+          <!-- <div class="row">
             <div class="col">
-                <img width="500" height="200" [src]="point.data.img" alt="">
+              <img width="500" height="200" [src]="point.data.img" alt="">
             </div>
-        </div>
-        <div class="row">
-            <div class="status">
-                <mat-form-field class="status-select">
-                    <mat-select *ngIf="point.data.active; else inactive" placeholder="ACTIVO">
-                      
+          </div> -->
+          <div class="row data-point">
+            <div class="col-4">
+              <div class="contact">
+                <div class="contact-content">
+                  <label> <strong> Contactos:</strong></label>
+                  <div>
+                    <p>{{point.data.contact.name}}</p>
+                    <p>tlf: {{point.data.contact.telefono}} - email: {{point.data.contact.email}}</p>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="col-5">
+              <div class="date">
+                <div class="date-content">
+                  <label><strong> Fechas de actividad: </strong></label>
+                  <div>
+                    <p>Disponible hasta: {{dateCreation(point.data.ubication.fechaFin)}}</p>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="col-3">
+              <div class="status">
+                <div class="status-date">
+                  <label><strong> Estado: </strong></label>
+                  <mat-form-field *ngIf="point.data.active; else inactive" class="select-fija">
+                    <mat-select aria-label="Select an option" placeholder="Activo">
+                      <mat-option value="si">Borrador</mat-option>
+                      <!-- <mat-option value="no"></mat-option> -->
                     </mat-select>
-                    <ng-template  #inactive >
-                      <mat-select  placeholder="DESACTIVO">
-                      
-                      </mat-select>
-                    </ng-template>
-                    
-                    
                   </mat-form-field>
+
+                  <ng-template #inactive>
+                    <mat-select placeholder="Borrador">
+
+                    </mat-select>
+                  </ng-template>
+                  <!-- <span>{{point.data.contact.name}}</span>
+                  <span>{{point.data.contact.telefono}} - {{point.data.contact.email}}</span> -->
+                </div>
+              </div>
             </div>
-            <div class="delete">
-                <button (click)="delete(point)" class="btn btn-danger">
-                    Eliminar Punto
-                </button>
+
+
+
+
+            <!-- <div class="status">
+              <mat-form-field class="status-select">
+                <mat-select *ngIf="point.data.active; else inactive" placeholder="ACTIVO">
+
+                </mat-select>
+                <ng-template #inactive>
+                  <mat-select placeholder="DESACTIVO">
+
+                  </mat-select>
+                </ng-template>
+
+
+              </mat-form-field>
+            </div> -->
+            <!-- <div class="delete">
+              <button (click)="delete(point)" class="btn btn-danger">
+                Eliminar Punto
+              </button>
+            </div> -->
+          </div>
+
+          <div class="row data-point">
+            <div class="row data-point">
+              <div class="col">
+                <div class="date">
+                  <div class="date-content">
+                    <label><strong> Capacidad de atención: </strong></label>
+                    <div>
+                      <p>{{point.data.capacidad}}</p>
+                    </div>
+                  </div>
+                </div>
+  
+              </div>
+
+              <div class="col">
+                <div class="date">
+                  <div class="date-content">
+                    <label><strong> Fecha de registro: </strong></label>
+                    <div>
+                      <!-- <p>{{point.data.capacidad}}</p> -->
+                    </div>
+                  </div>
+                </div>
+  
+              </div>
             </div>
+
+            <div class="row">
+
+            </div>
+            <div class="col">
+
+            </div>
+          </div>
         </div>
-      </div>
 
-    </mat-expansion-panel>
+      </mat-expansion-panel>
 
 
-  </mat-accordion>
+    </mat-accordion>
+  </div>
 
 
 </div>

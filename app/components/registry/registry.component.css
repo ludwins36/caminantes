@@ -12,6 +12,19 @@ form > *{
     width: 100%;
 } 
 
+h1{
+    font-size: 2rem;
+    margin-top: 40px;
+    color: #000;
+    font-weight: bold;
+}
+
+.card{
+    border-radius: 1rem;
+    background-image: url("../../../assets/img/fondoLateral.jpeg");
+
+}
+
 @media only screen and (max-width: 990px) {
  
 

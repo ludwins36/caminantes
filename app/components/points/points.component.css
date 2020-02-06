@@ -1,25 +1,97 @@
-.main-content{
-    width: 97%;
-    margin: 10px;
+.main-content {
+    height: 85%;
+    background: #f7f3f3;
 }
 
-label{
-    margin: auto;
-}
-
-.status{
-    margin-top: 12px;
-}
-
-.status-select{
+.date{
+    text-align: center;
+    margin-left: 20px;
     width: 120px;
 }
 
-.delete{
-    margin-left: auto;
+.container{
+  font-size: 12px;
+}
+
+p{
+  font-size: 12px
+}
+
+.select {
+    margin-left: 20px;
+    width: 120px;
+}
+
+.acordion{
+    width: 90%;
+    margin: auto;
     margin-top: 20px;
 }
 
-img{
-    margin-left: 40px;
+.buscar{
+    margin-left: auto;
+    width: 120px;
+    height: 40px;
+    border-radius: 1rem;
+    margin-top: 10px;
+    color: darkgray;
+}
+
+.title-label{
+  width: 70px;
+}
+
+mat-expansion-panel-header{
+  background: transparent;
+}
+
+.best-header{
+  background: white;
+}
+
+.tile-content {
+  display: flex;
+  justify-items: left;
+  /* justify-content: center; */
+  padding: 20px;
+  border-bottom: 1px darkgray solid;
+  width: 80%;
+  margin: auto;
+  padding-top: 50px;
+
+}
+
+
+h2 {
+  font-size: 18px;
+  margin-top: 20px;
+}
+
+.icon-title {
+  background: rgb(240, 200, 25);
+  color: azure;
+  border-radius: 50%;
+  margin-top: 20px;
+  margin-right: 20px;
+}
+
+label {
+  margin: auto;
+}
+
+.status {
+  margin-top: 12px;
+}
+
+.status-select {
+  width: 120px;
+}
+
+.delete {
+  margin-left: auto;
+  margin-top: 20px;
+}
+
+img {
+  margin-left: 40px;
 }

@@ -10,18 +10,18 @@
 
     <form [formGroup]="ubicationForm" novalidate>
       <div class="title">
-        <h3>Titulo</h3>
+        <h3>Título</h3>
         <div class="input-group mb-3 input-content">
 
-          <input matInput placeholder="Titulo del Punto" />
+          <input  formControlName="title" [(ngModel)]="points.title" matInput placeholder="Título del Punto" />
         </div>
       </div>
 
       <div class="description">
-        <h3>Descripsión</h3>
+        <h3>Descripción</h3>
         <div class="input-group mb-3 input-content">
 
-          <textarea matInput placeholder="Coloque una descripsion del punto"></textarea>
+          <textarea matInput formControlName="desc" [(ngModel)]="points.desc" placeholder="Coloque una descripción del punto"></textarea>
         </div>
       </div>
 
@@ -85,7 +85,6 @@
           <h3>Fotos de punto de atención</h3>
         </div>
         <br />
-        <img *ngIf="src" width="300" height="500" [src]="src" alt="" />
         <div class="container-input-file">
           <label class="custom-file">
             <!-- <mat-icon>home</mat-icon> -->
@@ -93,6 +92,7 @@
           </label>
         </div>
       </div>
+      <img *ngIf="src" width="300" height="500" [src]="src" alt="" />
       <div class="line"></div>
 
       <div class="sector">
@@ -100,16 +100,12 @@
           <h3>¿Cuál(es) grupo(s) poblacional(es) recibe atención en este punto?</h3>
         </div>
         <br />
-        <div class="checkbox">
-          <mat-checkbox class="custom-frame">
-            Colombianos retornados
+        <div class="checkbox" *ngFor="let grup of points.grupo.grupos;">
+          <mat-checkbox formControlName="grupo" [(ngModel)]="grup.grup" class="custom-frame">
+            {{grup.name}}
           </mat-checkbox>
         </div>
-        <div class="checkbox">
-          <mat-checkbox class="custom-frame">
-            Comunidad anfitriona
-          </mat-checkbox>
-        </div>
+        
       </div>
 
       <div class="sector">
@@ -127,12 +123,13 @@
       </div>
 
       <div class="line"></div>
+
       <div class="capacidad">
         <div class="title">
           <h3>Oferta</h3>
         </div>
-        <div style="width: 30% !important;" class="input-group mb-3 input-content">
-          <input formControlName="capacidad" [(ngModel)]="points.capacidad" type="number" class="input" />
+        <div style="width: 30% !important;" class="input-group input-content">
+          <input formControlName="oferta" [(ngModel)]="points.oferta" type="number" class="input" />
         </div>
       </div>
 
@@ -140,7 +137,7 @@
         <div class="title">
           <h3>Cantidad de entrega diaria</h3>
         </div>
-        <div style="width: 30% !important;" class="input-group mb-3 input-content">
+        <div style="width: 30% !important;" class="input-group input-content">
           <input formControlName="capacidad" [(ngModel)]="points.capacidad" type="number" class="input" />
         </div>
       </div>
@@ -206,7 +203,7 @@
           <div class="col">
             <h3>Nombre de contacto</h3>
             <div class="input-group mb-3 input-content address-input">
-              <input type="text" id="address" placeholder="Nombre y apellido" class="input" />
+              <input type="text"  formControlName="name" [(ngModel)]="points.contact.name" id="address" placeholder="Nombre y apellido" class="input" />
             </div>
           </div>
 
@@ -216,14 +213,14 @@
           <div class="col">
             <h3>Teléfono</h3>
             <div class="input-group mb-3 input-content address-input">
-              <input type="text" id="address" placeholder="Nombre y apellido" class="input" />
+              <input type="text" formControlName="telefono" [(ngModel)]="points.contact.telefono" id="address" placeholder="Número de telefono" class="input" />
             </div>
           </div>
 
           <div class="col">
             <h3>Email</h3>
             <div class="input-group mb-3 input-content address-input">
-              <input type="text" id="address" placeholder="Nombre y apellido" class="input" />
+              <input type="text" formControlName="email" [(ngModel)]="points.contact.email" placeholder="Correo electronico" class="input" />
             </div>
           </div>
 
@@ -234,12 +231,12 @@
 
 
       <div class="text-center">
-        <button type="button" (click)="registerPoint()" class="btn my-4"
+        <button type="button" (click)="registerPoint(false)" class="btn my-4"
           style="background-color: #ea9c27; color: white;">
           Crear Punto
         </button>
 
-        <button type="button" (click)="registerPoint()" class="btn my-4" style="background-color: #11cdef; color: white;">
+        <button type="button" (click)="registerPoint(true)" class="btn my-4" style="background-color: #11cdef; color: white;">
           Buardar Como Borrador
         </button>
       </div>

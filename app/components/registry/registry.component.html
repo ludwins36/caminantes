@@ -91,6 +91,16 @@
                   </mat-select>
                 </mat-form-field>
 
+                <mat-form-field *ngIf="organy.type == 0">
+                  <mat-select  placeholder="Tipo de Organización">
+                    <mat-option  value="">
+                     Gobierno
+                    </mat-option>
+          
+                   
+                  </mat-select>
+                </mat-form-field>
+
                 <div class="text-center">
                   <button type="button" (click)="registerUser()" class="btn my-4"
                     style="background-color: black; color: white;">Continuar</button>
