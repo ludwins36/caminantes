@@ -2,51 +2,79 @@
   <!-- Table -->
   <app-spinner-overlay [overlay]="overlay"></app-spinner-overlay>
 
+  <div class="container">
+
+    <div class="row">
+      <div class="col-md-6"></div>
+      <div class="">
+        <button class="btn redondeado " (click)="public()" style="background-color: gray; color: aliceblue;">GUARDAR BORRADOR</button>
+        <button class="btn btn-warning redondeado" (click)="public()" style="color: aliceblue;">PUBLICAR</button>
+      </div>
+
+    </div>
+
+  </div>
+  <hr>
   <div class="row">
     <div class="col-md-12">
-      <div class="card shadow">
-        <div class="col-md-12 py-3">
-          <form [formGroup]="entradaForm" class="form-row" novalidate>
+      <div class="col-md-12 py-4 mb-5">
+        <form [formGroup]="entradaForm" class="form-row mb-5" novalidate>
+          <div class="col-md-12">
+            <div class="form-group">
+              <h4>Nueva entrada</h4>
+            </div>
+          </div>
+          <div class="col-md-8">
             <div class="col-md-12">
               <div class="form-group">
-                <h2>Añadir Articulo</h2>
+                <input type="text" formControlName="title" class="form-control redondeado" placeholder="Título" />
               </div>
             </div>
-            <div class="col-md-6">
+            <div class="row col-12 mt-4">
+
+              <div class="col-md-6">
+                <div class="form-group">
+                  <select formControlName="category" class="form-control redondeado">
+                    <option class="" selected="">Categoría</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- imagen -->
+              <div class="col-md-6">
+                <div class="form-group">
+                  <input type="file" name="examinarImagen" (change)="cambioArchivo($event)"
+                    class="form-control redondeado" />
+                </div>
+              </div>
+              <!-- imagen -->
+
+            </div>
+
+          </div>
+          <div class="col-md-4">
+            <div class="col-md-12">
               <div class="form-group">
-                <input type="text" formControlName="title"  [(ngModel)]="createModel.title" name="tituloArticulo" class="form-control" placeholder="Titulo del Articulo" />
+                <textarea type="text" formControlName="descp" class="form-control"
+                  style="border-radius: 10px; height:120px" placeholder="Resumen"></textarea>
               </div>
             </div>
-            <div class="col-md-6">
-              <div class="form-group">
-                <input type="file" name="examinarImagen" (change)="cambioArchivo($event)" class="form-control" />
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="form-group">
-                <input type="text" formControlName="resumen"  [(ngModel)]="createModel.descp" name="descripcion" class="form-control"
-                  placeholder="Descripcion o resumen del articulo" />
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div class="form-group">
-                <select formControlName="category" [(ngModel)]="createModel.category" class="form-control" name="etiqueta">
-                  <option class="" selected="">Etiqueta categoría</option>
-                </select>
-              </div>
-            </div>
-          </form>
-        </div>
-        <div class="col-md-12">
-          <hr />
-        </div>
-        <div class="col-md-12">
-          <textarea name="" id="" class="text" cols="30" [(ngModel)]="createModel.text" rows="10"></textarea>
-          <!-- <app-ngx-editor [placeholder]="'Enter text here...'" [spellcheck]="true" [(ngModel)]="createModel.text">
-          </app-ngx-editor> -->
-          <button class="btn btn-success btn-block" (click)="public()">Publicar</button>
-        </div>
+          </div>
+
+          <div class="col-md-12">
+            <hr />
+          </div>
+          <!-- text-editor  -->
+          <div class="col-md-12">
+
+            <quill-editor formControlName="text" [styles]="qEStyles" [modules]="config"></quill-editor>
+
+          </div>
+
+
+        </form>
       </div>
+
     </div>
   </div>
 

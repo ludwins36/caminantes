@@ -68,6 +68,8 @@ import { AdminPointsComponent } from './components/admin-points/admin-points.com
 import { NotifiComponent } from './components/notifi/notifi.component';
 import { FilterHomeComponent } from './components/filter-home/filter-home.component';
 // import { NgxEditorModule } from 'ngx-editor';
+import {QuillModule} from 'ngx-quill';
+
 
 @NgModule({
   declarations: [
@@ -130,6 +132,7 @@ import { FilterHomeComponent } from './components/filter-home/filter-home.compon
     MatExpansionModule,
     AngularFireStorageModule,
     // NgxEditorModule,
+    QuillModule.forRoot({}),
     AngularFireModule.initializeApp(environment.firebaseConfig),
     FormsModule
   ],

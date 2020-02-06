@@ -5,3 +5,13 @@
 .text{
     width: 100%;
 }
+
+.redondeado {
+  border-radius: 50px;
+}
+
+
+b , strong {
+  font-weight: bold !important;
+}
+
